@@ -62,7 +62,7 @@ const server = http.createServer((req, res) => {
         res.end()
       });
   } catch (err) {
-    console.log('error.....', err)
+    console.log(err)
   }
 });
 console.log('Listening on port 8000');

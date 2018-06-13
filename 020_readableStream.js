@@ -1,5 +1,5 @@
 const fs = require('fs');
-const readableStream = fs.createReadStream('./SP1.csv');
+const readableStream = fs.createReadStream('./input/SP1.csv');
 let data = '';
 let chunk;
 let chunks = 0;

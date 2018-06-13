@@ -13,6 +13,7 @@ const startServers = () => {
     })
   });
   console.log('Memory consumption example server listening on port 8000');
+  console.log('command: curl -X GET http://localhost:8000')
   server.listen(8000);
 
 
@@ -21,6 +22,7 @@ const startServers = () => {
     stream.pipe(res);
   });
   console.log('Stream example server listening on port 8001');
+  console.log('command: curl -X GET http://localhost:8001')
   server2.listen(8001);
 };
 

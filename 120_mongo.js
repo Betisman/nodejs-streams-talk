@@ -67,6 +67,7 @@ const server = http.createServer((req, res) => {
       })
       .then(db => findDocuments(db))
       .then(mongoStream => {
+        console.log('mongo stream')
         mongoStream
           // .pipe(csvParser())
           .pipe(customMatchTransform())
