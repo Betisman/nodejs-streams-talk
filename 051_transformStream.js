@@ -1,6 +1,6 @@
 const fs = require('fs');
-const readableStream = fs.createReadStream('input/SP1.csv');
-const writableStream = fs.createWriteStream('output/11.txt');
+const readableStream = fs.createReadStream('./input/SP1.csv');
+const writableStream = fs.createWriteStream('./output/11.txt');
 const { Transform } = require('stream');
 
 const toUpperStream = new Transform({
