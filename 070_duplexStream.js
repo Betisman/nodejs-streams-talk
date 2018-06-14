@@ -13,5 +13,5 @@ const duplex = new Duplex({
 
 duplex.currentCharCode = 65;
 duplex.pipe(process.stdout);
-process.stdout.pipe(duplex);
+process.stdin.pipe(duplex);
 
