@@ -10,7 +10,7 @@ const { isMyTeamPlaying,
   toCustomMatch,
   toWebCard,
   myTeam,
-  myNationalTeam } = require('./helperWebBuilding');
+  myNationalTeam } = require('./helpers/helperWebBuilding');
 
 // Source
 const readableStream = fs.createReadStream('./input/closing_odds.csv');

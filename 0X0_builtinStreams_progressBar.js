@@ -4,7 +4,7 @@ const zlib = require('zlib');
 const inputFile = fs.readFileSync('./input/simple_input.txt');
 const outputFile = fs.createWriteStream('output/data.txt');
 
-const { createBigFile } = require('./helperCreateBigFile');
+const { createBigFile } = require('./helpers/helperCreateBigFile');
 
 const progressBar = () => {
   const inStream = fs.createReadStream('./output/data.txt');

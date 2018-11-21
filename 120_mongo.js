@@ -11,7 +11,7 @@ const { isMyTeamPlaying,
   toCustomMatch,
   toWebCard,
   myTeam,
-  myNationalTeam } = require('./helperWebBuilding');
+  myNationalTeam } = require('./helpers/helperWebBuilding');
 
 // MongoDB find functions
 const find = (db) => db.find({});
