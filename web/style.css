@@ -1,0 +1,68 @@
+.match {
+      font-size: 1em;
+      font-family: Arial;
+    }
+
+    .myTeam {
+      background: lightgreen;
+    }
+
+    .myTeam .cell {
+      border-color: green;
+    }
+
+    .myNationalTeam {
+      background: lightcoral;
+    }
+
+    .myNationalTeam .cell {
+      border-color: darkred;
+    }
+
+    .special {
+      background: gold;
+    }
+
+    .special .cell {
+      border-color: goldenrod;
+    }
+
+    #container {
+      display: table;
+      border-collapse: separate;
+      border-spacing: 2px;
+    }
+
+    .row {
+      display: table-row;
+    }
+
+    .cell {
+      display: table-cell;
+      padding: 3px 10px;
+      border: 1px solid black;
+      margin: 3px auto;
+    }
+
+    .row.header {
+      font-weight: bold;
+      background-color: lightgrey;
+    }
+
+    #myButton {
+      width: 30%;
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 4px;
+    }
+
+    #myButton:hover {
+      background-color: rgb(28, 65, 29);
+    }
+    
