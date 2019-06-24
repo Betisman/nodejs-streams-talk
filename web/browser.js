@@ -1,5 +1,8 @@
 const button = document.getElementById('myButton')
-button.addEventListener('click', process);
+button.addEventListener('click', processAll);
+
+const favouritesButton = document.getElementById('myFavouriteButton')
+favouritesButton.addEventListener('click', processFavourites);
 
 const myTeams = ['Betis'];
 const myNationalTeams = ['Spain'];
@@ -7,7 +10,8 @@ const specialDates = ['2008-06-29', '2010-07-11', '2012-07-01', '2005-06-11'];
 
 const isMyTeamPlaying = (match, myTeams) => (myTeams.includes(match.home_team) || myTeams.includes(match.away_team));
 const classMyTeam = match => isMyTeamPlaying(match, myTeams) ? ' myTeam' : isMyTeamPlaying(match, myNationalTeams) ? ' myNationalTeam' : '';
-const classSpecial = match => (specialDates.includes(match.date) && (isMyTeamPlaying(match, myTeams) || isMyTeamPlaying(match, myNationalTeams))) ? ' special' : '';
+// const classSpecial = match => (specialDates.includes(match.match_date) && (isMyTeamPlaying(match, myTeams) || isMyTeamPlaying(match, myNationalTeams))) ? ' special' : '';
+const classSpecial = match => specialDates.includes(match.match_date) && (isMyTeamPlaying(match, myTeams) || isMyTeamPlaying(match, myNationalTeams)) ? ' special' : '';
 let matches = 0;
 const toWebCard = match => `
   <div class="row match ${classMyTeam(match)} ${classSpecial(match)}">
@@ -17,20 +21,18 @@ const toWebCard = match => `
     <div class="cell">${match.home_team} ${match.home_score} - ${match.away_score} ${match.away_team}</div>
   </div>`;
 
-function parseJSON() {
-  return new TransformStream({
-    transform(chunk, controller) {
-      controller.enqueue(JSON.parse(chunk));
-    }
-  });
-}
+const parseJSON = () => new TransformStream({
+  transform(chunk, controller) {
+    controller.enqueue(JSON.parse(chunk));
+  }
+});
 
-function splitStream(splitOn) {
+const splitStream = (delimiter) => {
   let buffer = '';
   return new TransformStream({
     transform(chunk, controller) {
       buffer += chunk;
-      const parts = buffer.split(splitOn);
+      const parts = buffer.split(delimiter);
       parts.slice(0, -1).forEach(part => controller.enqueue(part));
       buffer = parts[parts.length - 1];
     },
@@ -38,7 +40,7 @@ function splitStream(splitOn) {
       if (buffer) controller.enqueue(buffer);
     }
   });
-}
+};
 
 const domParser = new DOMParser();
 const toWebCardStream = () => new TransformStream({
@@ -61,8 +63,14 @@ function toDOM() {
   });
 }
 
-async function process() {
-  const response = await fetch('/stream');
+function processAll() {
+  process('/stream');
+}
+function processFavourites () {
+  process('/stream?q=myTeam');
+}
+async function process(url) {
+  const response = await fetch(url);
 
   response.body
     .pipeThrough(new TextDecoderStream())

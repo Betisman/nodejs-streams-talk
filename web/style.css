@@ -49,9 +49,8 @@
       background-color: lightgrey;
     }
 
-    #myButton {
+    .button, #matchCounter {
       width: 30%;
-      background-color: #4CAF50;
       border: none;
       color: white;
       padding: 15px 32px;
@@ -61,8 +60,26 @@
       font-size: 16px;
       border-radius: 4px;
     }
+    
+    #myButton {
+      background-color: #4CAF50;
+    }
 
     #myButton:hover {
       background-color: rgb(28, 65, 29);
+    }
+
+    #myFavouriteButton {
+      background-color: rgb(177, 169, 54);
+    }
+    
+    #myFavouriteButton:hover {
+      background-color: rgb(60, 71, 29);
+    }
+
+    #matchCounter {
+      font-weight: bold;
+      color: black;
+      border: 1px solid grey;
     }
     
