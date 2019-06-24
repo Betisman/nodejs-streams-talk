@@ -9,8 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "csv-2-jsonl": "^2.0.0",
     "csv-parser": "^1.12.1",
     "csv-stream": "^0.2.0",
+    "express": "^4.17.1",
     "mongodb": "^3.1.0-beta4",
     "xml-stream": "^0.4.5"
   }
