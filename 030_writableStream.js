@@ -1,14 +1,25 @@
-const fs = require('fs');
-const readableStream = fs.createReadStream('input/airports.csv');
-const writableStream = fs.createWriteStream(`output/${Date.now()}_airports.csv`);
+const { Readable, Writable } = require('stream');
+
+const readableStream = new Readable({
+  read() {}
+});
+
+const writableStream = new Writable({
+  write(chunk, encoding, callback) {
+    console.log('write chunk:', chunk);
+    callback();
+  }
+});
+
+const dataToPush = '1234567890';
+readableStream.push(dataToPush);
+readableStream.push(null);
 
 let chunks = 0;
-
-readableStream.setEncoding('utf8');
-
 readableStream.on('data', function (chunk) {
   chunks++;
+  console.log(`.onData:', (${chunks}) ${chunk}`)
   writableStream.write(chunk);
 });
 
-readableStream.on('end', () => console.log(`${chunks} chunks`))
+readableStream.on('end', () => console.log(`onEnd: ${chunks} chunks`))
