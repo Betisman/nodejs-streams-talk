@@ -4,7 +4,8 @@
   "description": "",
   "main": "examples.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "mongo": "make mongo"
   },
   "author": "",
   "license": "ISC",
