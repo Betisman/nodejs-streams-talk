@@ -13,6 +13,11 @@ const { isMyTeamPlaying,
   myTeam,
   myNationalTeam } = require('./helpers/helperWebBuilding');
 
+// Config
+const dbUrl = 'mongodb://localhost:27017';
+const dbName = 'streams';
+const entityName = 'closing_odds';
+
 // MongoDB find functions
 const find = (db) => db.find({});
 const findDocuments = (db) => {
@@ -20,11 +25,6 @@ const findDocuments = (db) => {
   const stream = find(collection).stream();
   return stream;
 };
-
-// Config
-const dbUrl = 'mongodb://localhost:27017';
-const dbName = 'local';
-const entityName = 'closing_odds';
 
 // Transform streams
 const customMatchTransform = () => new Transform({
@@ -51,10 +51,17 @@ const filter = (param) => new Transform({
   }
 });
 
+const logStream = () => new Transform({
+  objectMode: true,
+  transform(chunk, encoding, cb) {
+    console.log(chunk);
+    cb(null, chunk);
+  }
+})
+
 const getQueryData = (req) => url.parse(req.url, true).query;
 
 const server = http.createServer((req, res) => {
-  console.log('res')
   try {
     const { q } = getQueryData(req);
     res.write(htmlHeader);
@@ -69,6 +76,7 @@ const server = http.createServer((req, res) => {
       .then(mongoStream => {
         console.log('mongo stream')
         mongoStream
+          .pipe(logStream())
           // .pipe(csvParser())
           .pipe(customMatchTransform())
           .pipe(filter(q))

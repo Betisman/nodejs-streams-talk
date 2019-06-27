@@ -1,0 +1,18 @@
+mongodb:
+  image: mongo
+  ports:
+    - "27017:27017"
+
+mongo-seed:
+  build: ./mongo-seed
+  tty: true
+  links:
+    - mongodb
+
+# my webserver which uses mongo (not shown in example)
+# webserver:
+#   build: ./webserver
+#   ports:
+#     - "80:80"
+#   links:
+#     - mongodb
