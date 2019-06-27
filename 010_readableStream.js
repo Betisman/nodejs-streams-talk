@@ -1,5 +1,5 @@
 const fs = require('fs');
-const readableStream = fs.createReadStream('./input/simple_input.txt');
+const readableStream = fs.createReadStream('./input/sample.txt');
 let data = '';
 let chunks = 0;
 

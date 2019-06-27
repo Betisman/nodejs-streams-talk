@@ -1,7 +1,7 @@
 const fs = require('fs');
 const zlib = require('zlib');
 
-const inputFile = fs.readFileSync('./input/simple_input.txt');
+const inputFile = fs.readFileSync('./input/sample.txt');
 const outputFile = fs.createWriteStream('output/data.txt');
 
 const { createBigFile } = require('./helpers/helperCreateBigFile');
