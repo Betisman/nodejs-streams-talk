@@ -10,5 +10,5 @@ const server = http.createServer((req, res) => {
     console.log(err)
   }
 });
-console.log('Listening on port 8001');
+console.log('Listening on port 8001 -> http://localhost:8001');
 server.listen(8001);

@@ -65,5 +65,5 @@ const server = http.createServer((req, res) => {
     console.log(err)
   }
 });
-console.log('Listening on port 8000');
+console.log('Listening on port 8000 --> http://localhost:8000');
 server.listen(8000);
