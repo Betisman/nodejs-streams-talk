@@ -17,3 +17,5 @@ npm-debug.log.*
 .floo*
 slides.key
 .vscode/
+output/*
+mongo-seed/*.csv
