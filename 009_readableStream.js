@@ -3,7 +3,7 @@ const { Readable } = require('stream');
 let data = '';
 
 const readableStream = new Readable({
-  read() { }
+  read(size) { }
 });
 
 readableStream.push('1234567890');
