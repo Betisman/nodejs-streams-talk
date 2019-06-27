@@ -10,8 +10,8 @@ readableStream.push('1234567890');
 readableStream.push(null); // No more data
 
 readableStream.on('data', (chunk) => {
-  console.log('data', chunk);
+  console.log('onData', chunk);
   data += chunk;
 });
 
-readableStream.on('end', () => console.log(data));
+readableStream.on('end', () => console.log('onEnd:', data));
