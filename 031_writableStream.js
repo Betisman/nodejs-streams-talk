@@ -11,4 +11,4 @@ readableStream.on('data', function (chunk) {
   writableStream.write(chunk);
 });
 
-readableStream.on('end', () => console.log(`${chunks} chunks`))
+readableStream.on('end', () => console.log(`onEnd: ${chunks} chunks`))
