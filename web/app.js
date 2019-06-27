@@ -43,7 +43,7 @@ app.get('/stream', (req, res) => {
   csvToJsonl({ inputStream: readableStream })
   .pipe(customStringify())
   .pipe(filter(q))
-    .pipe(res);
+  .pipe(res);
 
   readableStream
     .on('end', () => {
