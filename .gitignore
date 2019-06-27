@@ -16,3 +16,4 @@ npm-debug.log.*
 *.sublime-*
 .floo*
 slides.key
+.vscode/
